@@ -1,0 +1,11 @@
+<mat-card>
+  <img src="{{ product['thumbnail'] }}" alt="Product thumbnail" />
+
+  <h1>{{ product['title'] }}</h1>
+  <p>{{ product['description'] }}</p>
+
+  <span class="price">
+    <a>€{{ product['price'] }}</a>
+    <a>-{{ product['discountPercentage'] }}%</a>
+  </span>
+</mat-card>

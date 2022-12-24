@@ -1,0 +1,11 @@
+<mat-tab-group>
+  <mat-tab label="Smartphones"> {{ filteredProducts }} </mat-tab>
+  <mat-tab label="Laptops"> Content 2 </mat-tab>
+  <mat-tab label="Fragrances"> Content 3 </mat-tab>
+</mat-tab-group>
+
+<div class="container">
+  <app-product *ngFor="let product of products" [product]="product"></app-product>
+</div>
+
+<router-outlet></router-outlet>
