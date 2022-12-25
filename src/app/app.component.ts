@@ -7,22 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'vouchers';
-  filter: string = 'laptops';
   products: any;
   filteredProducts: any;
   
-  async get() {
+  async getProducts() {
     let url = 'https://dummyjson.com/products'
     let obj = await (await fetch(url)).json();
-
     this.products = obj['products'];
+  }
 
-    this.filteredProducts = this.products.filter((product: { ['category']: string }) => product['category'] === 'laptops');
-    console.log(this.filteredProducts)
+  test(selectedTab: any) {
+    let filter = selectedTab['tab']['textLabel'];
+    this.filteredProducts = this.products.filter((product: { ['category']: string }) => product['category'] === filter);
   }
 
 
   public ngOnInit(): void {
-    this.get();
+    this.getProducts();
   }
 }

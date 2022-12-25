@@ -1,11 +1,14 @@
-<mat-tab-group>
-  <mat-tab label="Smartphones"> {{ filteredProducts }} </mat-tab>
-  <mat-tab label="Laptops"> Content 2 </mat-tab>
-  <mat-tab label="Fragrances"> Content 3 </mat-tab>
+<mat-tab-group (selectedTabChange)="test($event)">
+
+  <mat-tab label="all"></mat-tab>
+  <mat-tab label="smartphones"></mat-tab>
+  <mat-tab label="laptops"></mat-tab>
+  <mat-tab label="fragrances"></mat-tab>
+
 </mat-tab-group>
 
 <div class="container">
-  <app-product *ngFor="let product of products" [product]="product"></app-product>
+  <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
 </div>
 
 <router-outlet></router-outlet>
