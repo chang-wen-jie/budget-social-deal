@@ -1,14 +1,13 @@
-<mat-tab-group (selectedTabChange)="test($event)">
-
-  <mat-tab label="all"></mat-tab>
-  <mat-tab label="smartphones"></mat-tab>
-  <mat-tab label="laptops"></mat-tab>
-  <mat-tab label="fragrances"></mat-tab>
-
+<mat-tab-group (selectedTabChange)="selectTab($event)">
+  <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
+    <div class="container">
+      <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
+    </div>
+  </mat-tab>
 </mat-tab-group>
 
-<div class="container">
-  <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
-</div>
+<footer>
+  hoi, ik ben een footer
+</footer>
 
 <router-outlet></router-outlet>
