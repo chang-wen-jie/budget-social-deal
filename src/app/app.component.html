@@ -1,5 +1,5 @@
 <mat-tab-group (selectedTabChange)="selectTab($event)">
-  <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
+  <mat-tab *ngFor="let tab of productTabs" [label]="tab.label">
     <div class="container">
       <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
     </div>

@@ -1,18 +1,42 @@
 mat-card {
-  height: 350px;
+  height: fit-content;
   width: 350px;
-
   img {
     height: 200px;
     width: 350px;
     border-radius: 10px;
   }
-
-  span a:first-of-type {
-    color: green;
+  img:hover {
+    transform: scale(1.1);
+    transform-origin: 50% 50%;
+    transition-duration: .75s;
   }
-  span a:nth-of-type(2) {
-    color: red;
+  h1 {
+    margin: 0;
+  }
+  .product-info {
+    p:first-of-type {
+      color: var(--yellow);
+    }
+    p:nth-of-type(2) {
+      color: var(--grey);
+    }
+  }
+  .product-data {
+    a:first-of-type {
+      float: left;
+      color: var(--blue);
+      font-size: 18px;
+    }
+    a:nth-of-type(2) {
+      color: var(--grey);
+      text-decoration: line-through;
+      font-size: 18px;
+    }
+    a:nth-of-type(3) {
+      color: var(--green);
+      font-size: 22px;
+    }
   }
 }
 
@@ -21,7 +45,6 @@ mat-card {
   mat-card {
     height: 500px;
     width: 500px;
-
     img {
         height: 50%;
         width: 100%;

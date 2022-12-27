@@ -5,5 +5,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: yellowgreen;
+}
+:root {
+  --yellow: #ffc226;
+  --green: #40bf4b;
+  --grey: #7c7c7c;
+  --blue: #00aeea;
 }
