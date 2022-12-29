@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  products: any;
-  filteredProducts: any;
-  productTabs = [{ label: 'All' }];
+  products = [];
+  filteredProducts = [];
+  productTabs = [
+    {
+      label: 'All',
+      icon: 'star',
+    },
+  ];
 
   async getProducts() {
     let url = 'https://dummyjson.com/products';
@@ -17,8 +22,32 @@ export class AppComponent implements OnInit {
 
     Object.keys(obj['products']).forEach((k) => {
       let category = obj['products'][k]['category'];
+      let icon = '';
+
+      switch (category) {
+        case 'smartphones':
+          icon = 'phone_iphone';
+          break;
+        case 'laptops':
+          icon = 'laptop_mac';
+          break;
+        case 'fragrances':
+          icon = 'air_freshener';
+          break;
+        case 'skincare':
+          icon = 'sanitizer';
+          break;
+        case 'groceries':
+          icon = 'shopping_cart';
+          break;
+        case 'home-decoration':
+          icon = 'chair';
+          break;
+      }
+
       this.productTabs.push({
         label: category.charAt(0).toUpperCase() + category.slice(1),
+        icon: icon,
       });
     });
 
@@ -26,6 +55,7 @@ export class AppComponent implements OnInit {
       (obj, index) =>
         this.productTabs.findIndex((o) => o.label === obj.label) === index
     );
+
     this.filteredProducts = this.products;
   }
 

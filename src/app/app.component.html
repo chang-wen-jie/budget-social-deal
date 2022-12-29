@@ -1,5 +1,11 @@
 <mat-tab-group (selectedTabChange)="selectTab($event)">
-  <mat-tab *ngFor="let tab of productTabs" [label]="tab.label">
+  <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
+    <ng-template mat-tab-label>
+      <div>
+        <mat-icon>{{ productTab.icon }}</mat-icon>
+        <div>{{ productTab.label }}</div>
+      </div>
+    </ng-template>
     <div class="container">
       <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
     </div>

@@ -1,5 +1,7 @@
 <mat-card>
-  <img src="{{ product['thumbnail'] }}" alt="Product thumbnail" />
+  <div class="img-wrapper">
+    <img src="{{ product['thumbnail'] }}" alt="Product thumbnail" />
+  </div>
   <h1>{{ product["title"] }}</h1>
   <span class="product-info">
     <p>★{{ product["rating"] }}</p>
