@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="test()">
   <div class="img-wrapper">
     <img src="{{ product['thumbnail'] }}" alt="Product thumbnail" />
   </div>
@@ -9,12 +9,12 @@
   </span>
   <span class="product-data">
     <a>Voorraad: {{ product["stock"] }}</a>
+    <a>€{{ product["price"] }}</a>
     <a
       >€{{
         product["price"] +
           (product["price"] * product["discountPercentage"]) / 100
       }}</a
     >
-    <a>€{{ product["price"] }}</a>
   </span>
 </mat-card>

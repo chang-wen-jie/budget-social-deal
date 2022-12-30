@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
     );
 
     this.filteredProducts = this.products;
+    console.log(this.filteredProducts);
   }
 
   selectTab(selectedTab: any) {

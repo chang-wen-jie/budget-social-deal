@@ -8,4 +8,8 @@ import { Product } from './product';
 })
 export class ProductComponent {
   @Input() product: Product | any;
+
+  test() {
+    console.log('test');
+  }
 }
