@@ -1,15 +1,39 @@
-<mat-tab-group (selectedTabChange)="selectTab($event)">
-  <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
-    <ng-template mat-tab-label>
-      <div>
-        <mat-icon>{{ productTab.icon }}</mat-icon>
-        <div>{{ productTab.label }}</div>
-      </div>
-    </ng-template>
-    <div class="container">
-      <app-product *ngFor="let product of filteredProducts" [product]="product"></app-product>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+<div>
+  <img
+    class="background"
+    src="https://media.socialdeal.nl/img/snowflake_drenthe.jpg"
+    alt="Social Deal Drenthe sfeerafbeelding"
+  />
+  <div class="content">
+    <nav>
+      <a>test1</a>
+      <a>test2</a>
+      <a>test3</a>
+      <a>test4</a>
+    </nav>
+    <mat-tab-group (selectedTabChange)="selectTab($event)">
+      <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
+        <ng-template mat-tab-label>
+          <div>
+            <mat-icon>{{ productTab.icon }}</mat-icon>
+            <div>{{ productTab.label }}</div>
+          </div>
+        </ng-template>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Vindt product</mat-label>
+            <input matInput placeholder="Zoek in alle categorieën">
+          </mat-form-field>
+        </form>
+        <div class="container">
+          <app-product
+            *ngFor="let product of filteredProducts"
+            [product]="product"
+          ></app-product>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
