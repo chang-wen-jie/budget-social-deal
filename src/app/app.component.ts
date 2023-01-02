@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,15 @@ export class AppComponent implements OnInit {
       icon: 'star',
     },
   ];
+  filterText = '';
+
+  checkoutForm = this.formBuilder.group({
+    name: '',
+  });
+
+  constructor(
+    private formBuilder: FormBuilder,
+  ) {}
 
   async getProducts() {
     let url = 'https://dummyjson.com/products';
@@ -70,6 +80,17 @@ export class AppComponent implements OnInit {
         (product: { ['category']: string }) => product['category'] === tab
       );
     }
+  }
+
+  onSubmit(): void {
+    console.log('Your order has been submitted', this.checkoutForm.value);
+
+    let taart: unknown = this.checkoutForm.value.name;
+    let test;
+    test = this.filteredProducts.filter(
+      (product: { ['title']: string }) => product['title'].includes(taart as string)
+    );
+    console.log(test);
   }
 
   public ngOnInit(): void {

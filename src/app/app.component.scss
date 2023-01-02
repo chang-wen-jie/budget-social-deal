@@ -11,6 +11,9 @@
   margin: auto;
   justify-content: center;
   width: 60%;
+  .searchbar{
+    width: 80%;
+  }
   .container {
     margin-top: 50px;
     display: flex;
@@ -19,4 +22,10 @@
     row-gap: 50px;
     column-gap: 40px;
   }
+}
+
+
+.mat-tab-label {
+  color: red;
+  height: 500px;
 }

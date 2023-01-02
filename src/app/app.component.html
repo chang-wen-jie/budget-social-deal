@@ -19,12 +19,27 @@
             <div>{{ productTab.label }}</div>
           </div>
         </ng-template>
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <mat-label>Vindt product</mat-label>
-            <input matInput placeholder="Zoek in alle categorieën">
+
+        <!-- <form (submit)="onSubmit($event)">
+          <mat-form-field class="searchbar">
+            <input matInput placeholder="Zoek in {{ productTab.label }}">
           </mat-form-field>
+          <button type="submit">Submit</button>
+        </form> -->
+
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+          <div>
+            <label for="name">
+              Name
+            </label>
+            <input id="name" type="text" formControlName="name">
+          </div>
+        
+          <button type="submit">Search</button>
+        
         </form>
+
         <div class="container">
           <app-product
             *ngFor="let product of filteredProducts"
