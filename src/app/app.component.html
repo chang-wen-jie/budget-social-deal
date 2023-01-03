@@ -20,24 +20,10 @@
           </div>
         </ng-template>
 
-        <!-- <form (submit)="onSubmit($event)">
+        <form [formGroup]="checkoutForm">
           <mat-form-field class="searchbar">
-            <input matInput placeholder="Zoek in {{ productTab.label }}">
+            <input matInput id="name" formControlName="name" placeholder="Zoeken in {{ productTab.label }}" (ngModelChange)="onChange()">
           </mat-form-field>
-          <button type="submit">Submit</button>
-        </form> -->
-
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-
-          <div>
-            <label for="name">
-              Name
-            </label>
-            <input id="name" type="text" formControlName="name">
-          </div>
-        
-          <button type="submit">Search</button>
-        
         </form>
 
         <div class="container">

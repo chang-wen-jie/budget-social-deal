@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     },
   ];
   filterText = '';
+  searchTerm: string = '';
 
   checkoutForm = this.formBuilder.group({
     name: '',
@@ -65,9 +66,7 @@ export class AppComponent implements OnInit {
       (obj, index) =>
         this.productTabs.findIndex((o) => o.label === obj.label) === index
     );
-
     this.filteredProducts = this.products;
-    console.log(this.filteredProducts);
   }
 
   selectTab(selectedTab: any) {
@@ -82,15 +81,21 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    console.log('Your order has been submitted', this.checkoutForm.value);
+  onChange(): void {
+    let taart: unknown = this.checkoutForm.value['name']?.toLocaleLowerCase();
+    let filter;
 
-    let taart: unknown = this.checkoutForm.value.name;
-    let test;
-    test = this.filteredProducts.filter(
-      (product: { ['title']: string }) => product['title'].includes(taart as string)
+    console.log(this.filterText);
+    
+    if (taart === '') {
+      this.getProducts();
+    }
+
+    filter = this.filteredProducts.filter(
+      (product: { ['title']: string }) => product['title'].toLocaleLowerCase().startsWith(taart as string)
     );
-    console.log(test);
+
+    this.filteredProducts = filter;
   }
 
   public ngOnInit(): void {
