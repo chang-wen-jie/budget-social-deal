@@ -13,6 +13,14 @@
       <a>test4</a>
     </nav>
 
+    <div class="search-container">
+      <form [formGroup]="productSearchForm">
+        <mat-form-field class="search-bar">
+          <input matInput formControlName="query" placeholder="Zoeken in {{ selectedProductTab }}" (ngModelChange)="searchProduct()">
+        </mat-form-field>
+      </form>
+    </div>
+
     <mat-tab-group (selectedTabChange)="changeProductTab($event)">
       <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
         <ng-template mat-tab-label>
@@ -21,12 +29,6 @@
             <div>{{ productTab.label }}</div>
           </div>
         </ng-template>
-
-        <form [formGroup]="productSearchForm">
-          <mat-form-field class="searchbar">
-            <input matInput formControlName="query" placeholder="Zoeken in {{ productTab.label }}" (ngModelChange)="searchProduct()">
-          </mat-form-field>
-        </form>
 
         <div class="container">
           <app-product

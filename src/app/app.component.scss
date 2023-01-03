@@ -11,8 +11,12 @@
   margin: auto;
   justify-content: center;
   width: 60%;
-  .searchbar{
-    width: 80%;
+  .search-container {
+    display: flex;
+    justify-content: center;
+    .search-bar{
+      width: 100%;
+    }
   }
   .container {
     margin-top: 50px;

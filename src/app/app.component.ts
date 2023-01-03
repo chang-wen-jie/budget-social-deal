@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
       this.productSearchForm.value['query']?.toLowerCase();
 
     if (this.selectedProductTab === 'all') {
-      this.categorisedProducts = this.filteredProducts.filter(
+      this.categorisedProducts = this.products.filter(
         (product: { ['title']: string }) =>
           product['title'].toLowerCase().startsWith(searchQuery as string)
       );
