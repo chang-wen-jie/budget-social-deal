@@ -4,6 +4,7 @@
     src="https://media.socialdeal.nl/img/snowflake_drenthe.jpg"
     alt="Social Deal Drenthe sfeerafbeelding"
   />
+
   <div class="content">
     <nav>
       <a>test1</a>
@@ -11,7 +12,8 @@
       <a>test3</a>
       <a>test4</a>
     </nav>
-    <mat-tab-group (selectedTabChange)="selectTab($event)">
+
+    <mat-tab-group (selectedTabChange)="changeProductTab($event)">
       <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
         <ng-template mat-tab-label>
           <div>
@@ -20,15 +22,15 @@
           </div>
         </ng-template>
 
-        <form [formGroup]="checkoutForm">
+        <form [formGroup]="productSearchForm">
           <mat-form-field class="searchbar">
-            <input matInput id="name" formControlName="name" placeholder="Zoeken in {{ productTab.label }}" (ngModelChange)="onChange()">
+            <input matInput formControlName="query" placeholder="Zoeken in {{ productTab.label }}" (ngModelChange)="searchProduct()">
           </mat-form-field>
         </form>
 
         <div class="container">
           <app-product
-            *ngFor="let product of filteredProducts"
+            *ngFor="let product of categorisedProducts"
             [product]="product"
           ></app-product>
         </div>

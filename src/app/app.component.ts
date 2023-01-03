@@ -8,23 +8,22 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   products = [];
+  categorisedProducts = [];
   filteredProducts = [];
+
   productTabs = [
     {
       label: 'All',
       icon: 'star',
     },
   ];
-  filterText = '';
-  searchTerm: string = '';
+  selectedProductTab = 'all';
 
-  checkoutForm = this.formBuilder.group({
-    name: '',
+  productSearchForm = this.formBuilder.group({
+    query: '',
   });
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   async getProducts() {
     let url = 'https://dummyjson.com/products';
@@ -66,36 +65,39 @@ export class AppComponent implements OnInit {
       (obj, index) =>
         this.productTabs.findIndex((o) => o.label === obj.label) === index
     );
-    this.filteredProducts = this.products;
+    this.categorisedProducts = this.products;
   }
 
-  selectTab(selectedTab: any) {
-    let tab = selectedTab['tab']['textLabel'].toLowerCase();
+  changeProductTab(productTab: any): void {
+    this.selectedProductTab = productTab['tab']['textLabel'].toLowerCase();
 
-    if (selectedTab['index'] === 0) {
-      this.filteredProducts = this.products;
+    if (productTab['index'] === 0) {
+      this.categorisedProducts = this.products;
     } else {
-      this.filteredProducts = this.products.filter(
-        (product: { ['category']: string }) => product['category'] === tab
+      this.categorisedProducts = this.products.filter(
+        (product: { ['category']: string }) =>
+          product['category'] === this.selectedProductTab
       );
     }
+    this.filteredProducts = this.categorisedProducts;
   }
 
-  onChange(): void {
-    let taart: unknown = this.checkoutForm.value['name']?.toLocaleLowerCase();
-    let filter;
+  searchProduct(): void {
+    let searchQuery: unknown =
+      this.productSearchForm.value['query']?.toLowerCase();
 
-    console.log(this.filterText);
-    
-    if (taart === '') {
-      this.getProducts();
+    if (this.selectedProductTab === 'all') {
+      this.categorisedProducts = this.filteredProducts.filter(
+        (product: { ['title']: string }) =>
+          product['title'].toLowerCase().startsWith(searchQuery as string)
+      );
+    } else {
+      this.categorisedProducts = this.filteredProducts.filter(
+        (product: { ['category']: string; ['title']: string }) =>
+          product['category'].toLowerCase() === this.selectedProductTab &&
+          product['title'].toLowerCase().startsWith(searchQuery as string)
+      );
     }
-
-    filter = this.filteredProducts.filter(
-      (product: { ['title']: string }) => product['title'].toLocaleLowerCase().startsWith(taart as string)
-    );
-
-    this.filteredProducts = filter;
   }
 
   public ngOnInit(): void {
