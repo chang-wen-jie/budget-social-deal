@@ -79,6 +79,7 @@ export class AppComponent implements OnInit {
           product['category'] === this.selectedProductTab
       );
     }
+    
     this.filteredProducts = this.categorisedProducts;
   }
 
