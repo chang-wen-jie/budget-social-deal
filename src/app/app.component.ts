@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   products = [];
   categorisedProducts = [];
   filteredProducts = [];
-
   productTabs = [
     {
       label: 'All',
@@ -18,7 +17,6 @@ export class AppComponent implements OnInit {
     },
   ];
   selectedProductTab = 'all';
-
   productSearchForm = this.formBuilder.group({
     query: '',
   });

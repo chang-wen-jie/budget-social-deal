@@ -2,11 +2,14 @@
   <div class="img-wrapper">
     <img src="{{ product['thumbnail'] }}" alt="Product thumbnail" />
   </div>
+
   <h1>{{ product["title"] }}</h1>
+
   <span class="product-info">
     <p>★{{ product["rating"] }}</p>
     <p>{{ product["description"] }}</p>
   </span>
+
   <span class="product-data">
     <a>Voorraad: {{ product["stock"] }}</a>
     <a>€{{ product["price"] }}</a>

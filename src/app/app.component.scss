@@ -11,17 +11,17 @@
   margin: auto;
   justify-content: center;
   width: 60%;
-  nav img {
-    height: 15%;
-    width: 15%;
-  }
-  .form-container {
+  nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    .search-bar {
-      display: flex;
-      width: 50em;
+    justify-content: flex-end;
+    img {
+      height: 50px;
+    }
+    a {
+      margin: 0 auto;
+    }
+    form {
+      margin-left: auto;
     }
   }
   .container {

@@ -1,51 +1,38 @@
-<div>
-  <img
-    class="background"
-    src="https://media.socialdeal.nl/img/snowflake_drenthe.jpg"
-    alt="Social Deal Drenthe sfeerafbeelding"
-  />
+<img
+  class="background"
+  src="https://media.socialdeal.nl/img/snowflake_drenthe.jpg"
+  alt="Social Deal Drenthe sfeerafbeelding"
+/>
 
-  <div class="content">
-    <nav>
-      <a>
-        <img src="https://media.socialdeal.nl/img/logo-social-deal.png" a="Social Deal">
-      </a>
-      <a>test2</a>
-      <a>test3</a>
-      <a>test4</a>
-    </nav>
+<div class="content">
+  <nav>
+    <img src="https://media.socialdeal.nl/img/logo-social-deal.png" a="Social Deal">
+    <a>Nieuwe deals in ...</a>
+    <form [formGroup]="productSearchForm">
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput formControlName="query" placeholder="Zoeken in {{ selectedProductTab }}" (ngModelChange)="searchProduct()">
+      </mat-form-field>
+    </form>
+  </nav>
 
-    <div>
-      test
-    </div>
-
-    <div class="form-container">
-      <form [formGroup]="productSearchForm">
-        <mat-form-field class="search-bar">
-          <mat-icon matPrefix>search</mat-icon>
-          <input matInput formControlName="query" placeholder="Zoeken in {{ selectedProductTab }}" (ngModelChange)="searchProduct()">
-        </mat-form-field>
-      </form>
-    </div>
-
-    <mat-tab-group (selectedTabChange)="changeProductTab($event)">
-      <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
-        <ng-template mat-tab-label>
-          <div>
-            <mat-icon>{{ productTab.icon }}</mat-icon>
-            <div>{{ productTab.label }}</div>
-          </div>
-        </ng-template>
-
-        <div class="container">
-          <app-product
-            *ngFor="let product of categorisedProducts"
-            [product]="product"
-          ></app-product>
+  <mat-tab-group (selectedTabChange)="changeProductTab($event)">
+    <mat-tab *ngFor="let productTab of productTabs" [label]="productTab.label">
+      <ng-template mat-tab-label>
+        <div>
+          <mat-icon>{{ productTab.icon }}</mat-icon>
+          <div>{{ productTab.label }}</div>
         </div>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
+      </ng-template>
+
+      <div class="container">
+        <app-product
+          *ngFor="let product of categorisedProducts"
+          [product]="product"
+        ></app-product>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
 
 <router-outlet></router-outlet>
